@@ -69,19 +69,3 @@ var createFrameRequester = function(timeStep) {
     return requester;
 };
 
-var getCodeObjFromCode = function(code) {
-    if (code.trim().substr(0,1) == "{" && code.trim().substr(-1,1) == "}") {
-        code = "(" + code + ")";
-    }
-    /* jslint evil:true */
-    obj = eval(code);
-    /* jshint evil:false */
-    if(typeof obj.init !== "function") {
-        throw "Code must contain an init function";
-    }
-    if(typeof obj.update !== "function") {
-        throw "Code must contain an update function";
-    }
-    return obj;
-}
-
